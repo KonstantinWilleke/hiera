@@ -98,6 +98,7 @@ class MaskUnitAttention(nn.Module):
         if hasattr(F, "scaled_dot_product_attention"):
             # Note: the original paper did *not* use SDPA, it's a free boost!
             x = F.scaled_dot_product_attention(q, k, v)
+            breakhere
         else:
             attn = (q * self.scale) @ k.transpose(-1, -2)
             attn = attn.softmax(dim=-1)
